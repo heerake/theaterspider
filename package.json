@@ -1,0 +1,28 @@
+{
+  "name": "theaterspider",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cheerio": "^0.22.7",
+    "@types/lodash": "^4.14.109",
+    "@types/moment": "^2.13.0",
+    "@types/query-string": "^5.1.0",
+    "axios": "^0.18.0",
+    "axios-form": "0.0.3",
+    "cheerio": "^1.0.0-rc.2",
+    "lodash": "^4.17.10",
+    "lodash-es": "^4.17.10",
+    "moment": "^2.22.1",
+    "query-string": "^6.1.0",
+    "typescript": "^2.8.3"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0"
+  }
+}
