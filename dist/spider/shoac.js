@@ -33,7 +33,7 @@ async function start() {
     }
     console.log(datas);
     console.log(JSON.stringify(datas));
-    fs_1.default.writeFileSync('shoac.json', JSON.stringify(datas, null, 4), 'utf8');
+    fs_1.default.writeFileSync('./src/data/shoac.json', JSON.stringify(datas, null, 4), 'utf8');
 }
 async function getData(startDate, endDate) {
     let tickets = [];

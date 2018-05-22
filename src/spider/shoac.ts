@@ -40,7 +40,7 @@ async function start() {
     console.log(datas);
     console.log(JSON.stringify(datas));
 
-    fs.writeFileSync('shoac.json', JSON.stringify(datas, null, 4), 'utf8');
+    fs.writeFileSync('./src/data/shoac.json', JSON.stringify(datas, null, 4), 'utf8');
 }
 
 async function getData(startDate: Date, endDate: Date) {
