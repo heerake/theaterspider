@@ -6,10 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const moment_1 = __importDefault(require("moment"));
 const fs_1 = __importDefault(require("fs"));
-var SourceEnum;
-(function (SourceEnum) {
-    SourceEnum["Sgt"] = "sgt";
-})(SourceEnum || (SourceEnum = {}));
+const path_1 = __importDefault(require("path"));
+const ticket_1 = require("../types/ticket");
 async function start() {
     let datas = [];
     let time = moment_1.default();
@@ -25,9 +23,7 @@ async function start() {
         });
         time = time.add(1, 'M');
     }
-    console.log(datas);
-    console.log(JSON.stringify(datas));
-    fs_1.default.writeFileSync('./src/data/sgt.json', JSON.stringify(datas, null, 4), 'utf8');
+    fs_1.default.writeFileSync(path_1.default.resolve(__dirname, '../../data/sgt.json'), JSON.stringify(datas, null, 4), 'utf8');
 }
 async function getData(year, month) {
     let result = [];
@@ -37,9 +33,11 @@ async function getData(year, month) {
             res.data.forEach(t => {
                 result.push({
                     title: t.project_name,
-                    date: [moment_1.default(t.project_st_time).toDate()],
+                    date: [{
+                            date: moment_1.default(t.project_st_time).toDate()
+                        }],
                     url: `http://www.shgtheatre.com/plus/view.php?aid=${t.aid}`,
-                    source: SourceEnum.Sgt
+                    source: ticket_1.SourceEnum.Sgt
                 });
             });
         }

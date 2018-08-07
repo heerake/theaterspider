@@ -1,10 +1,10 @@
-import shoac from './spider/shoac';
+import shoac, { getDetails as shoacDetail } from './spider/shoac';
 import sgt from './spider/sgt';
-import sso from './spider/sso';
+import sso, { getDetails as ssoDetail } from './spider/sso';
+
 async function start() {
-    //shoac();
-    //sgt();
-    sso();
+  await Promise.all([shoac(), sgt(), sso()])
+  await Promise.all([shoacDetail(), ssoDetail()]);
 }
 
 export default start;

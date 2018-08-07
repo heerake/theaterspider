@@ -9,12 +9,9 @@ import moment from 'moment';
 import queryString from 'query-string';
 
 import fs from 'fs';
+import path from 'path';
 
-import { Ticket } from '../typings/ticket';
-
-enum SourceEnum {
-    Sgt = 'sgt'
-}
+import { Ticket , SourceEnum} from '../types/ticket';
 
 async function start() {
     let datas: Ticket[] = [];
@@ -33,10 +30,7 @@ async function start() {
         time = time.add(1, 'M');
     }
 
-    console.log(datas);
-    console.log(JSON.stringify(datas));
-
-    fs.writeFileSync('./src/data/sgt.json', JSON.stringify(datas, null, 4), 'utf8');
+    fs.writeFileSync(path.resolve(__dirname, '../../data/sgt.json'), JSON.stringify(datas, null, 4), 'utf8');
 }
 
 async function getData(year: number, month: number) {
@@ -48,7 +42,9 @@ async function getData(year: number, month: number) {
             res.data.forEach(t => {
                 result.push({
                     title: t.project_name,
-                    date: [moment(t.project_st_time).toDate()],
+                    date: [{
+                      date: moment(t.project_st_time).toDate()
+                    }],
                     url: `http://www.shgtheatre.com/plus/view.php?aid=${t.aid}`,
                     source: SourceEnum.Sgt
                 })
